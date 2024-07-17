@@ -20,16 +20,12 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-//    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
-//        this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
     }
-
-
 
     @Override
     public List<User> findAll() {
