@@ -1,6 +1,5 @@
 package ru.kata.spring.boot_security.demo.models;
 
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -40,6 +39,25 @@ public class User {
     private List<Role> roles;
 
     public User() {
+    }
+
+    public User(String username, String name, String surname, Integer age, String email, String password, List<Role> roles) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(String username, String name, String surname, Integer age, String email, String password) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.email = email;
+        this.password = password;
     }
 
     public List<Role> getRoles() {
