@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
@@ -25,7 +26,7 @@ public class AdminController {
     }
 
     @GetMapping
-    public String showAllUsers(Model model) {
+    public String showAllUsers(ModelMap model) {
         model.addAttribute("users", userService.findAll());
         return "users";
     }
@@ -51,6 +52,9 @@ public class AdminController {
 
     @GetMapping("/update")
     public String createUpdateForm(@RequestParam(value = "id") Long id, Model model) {
+        List<Role> roles = roleRepository.findAll();
+        User user = userService.findOne(id);
+        user.setRoles(roles);
         model.addAttribute("user", userService.findOne(id));
         return "update";
     }
